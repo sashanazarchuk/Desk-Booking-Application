@@ -35,6 +35,7 @@ export class BookingsHistoryComponent {
     this.router.navigate(['/edit', id]);
   }
 
+ 
   getDurationDays(booking: Booking): string {
     const start = new Date(booking.startDate);
     const end = new Date(booking.endDate);
@@ -49,6 +50,8 @@ export class BookingsHistoryComponent {
     return '';
   }
 
+
+  //Calculates the duration of  a reservation in a convenient text format, but only for rooms of type `MeetingRoom`
   getDurationHours(booking: Booking): string {
     const start = new Date(booking.startDate);
     const end = new Date(booking.endDate);
@@ -80,7 +83,7 @@ export class BookingsHistoryComponent {
     if (type === 'success') {
       data.showConfirm = false;
     } else if (type === 'confirm') {
-      data.title = 'Cancel your booking?';
+      data.title = 'Are you sure you want to cancel this booking?';
       data.message = 'This action cannot be undone';
       data.showConfirm = true;
       data.confirmText = 'Yes, cancel it';
@@ -100,6 +103,7 @@ export class BookingsHistoryComponent {
       }
     });
   }
+
 
   deleteBooking(id?: number) {
     if (!id) return;

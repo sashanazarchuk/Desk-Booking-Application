@@ -47,7 +47,7 @@
             </div>
 
 
-            <!-- Radio buttons, if NO OpenSpace -->
+             <!-- Radio buttons, if NO OpenSpace -->
             <div *ngIf="showRadioButtons" class="mt-4 w-full">
                 <label>What room size do you need?</label>
                 <div *ngFor="let workspace of workspaces$ | async">
@@ -79,7 +79,7 @@
             <app-date-time-picker></app-date-time-picker>
             <div class="flex justify-center  pb-5  ">
                 <button (click)="isEditMode ? patchReservation() : submitReservation()" type="submit"
-                    class="w-1/2 bg-indigo-600 text-white p-2 mt-2 rounded-md cursor-pointer">
+                    class="w-1/2 bg-indigo-600 text-white p-2 mt-2 rounded-md">
                     Submit
                 </button>
             </div>

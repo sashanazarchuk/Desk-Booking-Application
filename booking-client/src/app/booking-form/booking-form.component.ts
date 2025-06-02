@@ -126,7 +126,7 @@ export class BookingFormComponent {
           data: {
             title: "You're all set!",
             imageUrl: "icons/success.svg",
-            message: `Your room for ${this.selectedSeats} people is booked from ${new Date(start).toDateString()} to ${new Date(end).toDateString()}. A confirmation has been sent to your email ${this.email}.`,
+            message: `Your room for <span class="font-medium">${this.selectedSeats} ${this.selectedSeats === 1 ? 'person' : 'people'}</span> is booked from <span class="font-medium">${new Date(start).toDateString()}</span> to <span class="font-medium">${new Date(end).toDateString()}</span>. A confirmation has been sent to your email <span class="font-medium">${this.email}</span>.`,
             showConfirm: false,
             cancelText: 'My bookings',
             redirectToWorkspace: true

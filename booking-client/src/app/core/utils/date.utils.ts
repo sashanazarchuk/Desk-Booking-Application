@@ -1,6 +1,7 @@
 import { DateTimePickerComponent } from "../../date-time-picker/date-time-picker.component";
 
 
+//Method Combines separate date and time objects into a single string
 export function combineDateTime(date: Date, time: Date): string {
     const combined = new Date(date);
     combined.setHours(time.getHours());
@@ -16,7 +17,7 @@ export function combineDateTime(date: Date, time: Date): string {
 }
 
 
-
+//Updates the DateTimePicker settings according to the specified start and end dates
 export function updateCalendar(calendar: DateTimePickerComponent, startDate: Date, endDate: Date): void {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -28,6 +29,7 @@ export function updateCalendar(calendar: DateTimePickerComponent, startDate: Dat
 }
 
 
+//Converts a date object to a string using local time
 export function toLocalISOString(date: Date): string {
     const pad = (n: number): string => n.toString().padStart(2, '0');
 

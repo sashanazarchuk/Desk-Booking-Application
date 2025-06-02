@@ -69,6 +69,39 @@
                     </div>
                 </ng-container>
             </div>
+
+
+
+            <ng-container *ngFor="let book of (bookings$ | async)">
+                <div *ngIf="book.workspace.id === workspace.id" class="bg-[#EAF7EE] p-2 flex">
+                    <img src="icons/success.svg" class="w-[25px] mr-2" />
+                    <div>
+                        This workspace is already booked by
+                        <span class="font-medium">{{ book.email }}</span>
+                        <ng-container *ngIf="hasNonOpenSpaceRooms(workspace); else openSpaceBlock">
+                            for {{ book.rooms.capacity }} people
+                        </ng-container>
+                        <ng-template #openSpaceBlock>
+                            for <span class="font-medium">{{ book.seatsBooked }}</span>
+                            {{ book.seatsBooked === 1 ? 'person' : 'people' }}
+                        </ng-template>
+                        from
+                        <span class="font-medium">
+                            {{ book.startDate | date: 'MMMM d, y, h:mm a' }}
+                        </span>
+                        to
+                        <span class="font-medium">
+                            {{ book.endDate | date: 'MMMM d, y, h:mm a' }}
+                        </span>
+                    </div>
+                </div>
+            </ng-container>
+
+
+
+
+
+
         </div>
         <div>
             <button (click)="createBooking()"

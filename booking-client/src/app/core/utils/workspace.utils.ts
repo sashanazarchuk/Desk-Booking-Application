@@ -7,6 +7,8 @@ export interface WorkspaceChangeResult {
     selectedRoomId: number;
 }
 
+
+//Determines the interface state based on the selected workspace.
 export function getWorkspaceChangeState(workspaces: Workspace[], selectedWorkspaceId: string): WorkspaceChangeResult {
     const workspace = workspaces.find(w => w.name === selectedWorkspaceId);
     if (!workspace) {

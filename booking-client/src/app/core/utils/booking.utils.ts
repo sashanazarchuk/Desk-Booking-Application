@@ -1,5 +1,7 @@
 import { toLocalISOString } from "./date.utils";
 
+
+//Creates an array of JSON Patch operations to update the reservation
 export function createPatchDoc(
     name: string,
     email: string,
