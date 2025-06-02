@@ -13,7 +13,7 @@ import { createPatchDoc } from '../core/utils/booking.utils';
 import { ErrorHandlerService } from '../core/services/error-handler.service';
 import { DateTimePickerComponent } from "../date-time-picker/date-time-picker.component";
 import { Workspace, WorkspaceType } from '../core/models/workspace.model';
-import { BookingCreatePayload } from '../core/models/booking.model';
+import { Booking, BookingCreatePayload } from '../core/models/booking.model';
 
 @Component({
   selector: 'app-booking-form',
@@ -22,6 +22,12 @@ import { BookingCreatePayload } from '../core/models/booking.model';
   styleUrl: './booking-form.component.css'
 })
 export class BookingFormComponent {
+
+  @ViewChild(DateTimePickerComponent) calendar!: DateTimePickerComponent;
+
+  readonly dialog = inject(MatDialog);
+  private subscription!: Subscription;
+
   workspaces$!: Observable<Workspace[]>;
   workspaces: Workspace[] = [];
   selectedWorkspaceId: string = '';
@@ -29,13 +35,8 @@ export class BookingFormComponent {
   showRadioButtons = false;
   selectedRoomId!: number;
   selectedRoomType: WorkspaceType | null = null;
-  private subscription!: Subscription;
-
   bookingId?: number;
   isEditMode = false;
-
-  @ViewChild(DateTimePickerComponent) calendar!: DateTimePickerComponent;
-
 
   name = '';
   email = '';
@@ -44,14 +45,11 @@ export class BookingFormComponent {
   formErrors: { [key: string]: string[] } = {};
   generalErrors: string[] = [];
 
-
-  readonly dialog = inject(MatDialog);
-
   constructor(private workspaceService: WorkspaceService, private errorHandlerService: ErrorHandlerService, private route: ActivatedRoute, private bookingService: BookingService) { }
 
 
+  // Component initialization: get route parameters, load workspaces, define editing mode
   ngOnInit() {
-
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam) {
@@ -83,7 +81,7 @@ export class BookingFormComponent {
   }
 
 
-
+  // Creates a new reservation after validating dates and times, shows a success or error message
   submitReservation() {
     const validationError = this.calendar.validateDateTimes();
 
@@ -107,8 +105,23 @@ export class BookingFormComponent {
       return;
     }
 
+
+
     const start = combineDateTime(startDate, startTime);
     const end = combineDateTime(endDate, endTime);
+
+    const room = this.workspaces
+      .flatMap(ws => ws.rooms)
+      .find(r => r.id === this.selectedRoomId);
+
+    if (!room) {
+      return;
+    }
+
+    const seatsText = room.workspaceType === WorkspaceType.OpenSpace
+      ? `${this.selectedSeats} ${this.selectedSeats === 1 ? 'person' : 'people'}`
+      : `${room.capacity} ${room.capacity === 1 ? 'person' : 'people'}`;
+
 
     const payload: BookingCreatePayload = {
       name: this.name,
@@ -126,7 +139,7 @@ export class BookingFormComponent {
           data: {
             title: "You're all set!",
             imageUrl: "icons/success.svg",
-            message: `Your room for <span class="font-medium">${this.selectedSeats} ${this.selectedSeats === 1 ? 'person' : 'people'}</span> is booked from <span class="font-medium">${new Date(start).toDateString()}</span> to <span class="font-medium">${new Date(end).toDateString()}</span>. A confirmation has been sent to your email <span class="font-medium">${this.email}</span>.`,
+            message: `Your room for <span class="font-medium">${seatsText}</span> is booked from <span class="font-medium">${new Date(start).toDateString()}</span> to <span class="font-medium">${new Date(end).toDateString()}</span>. A confirmation has been sent to your email <span class="font-medium">${this.email}</span>.`,
             showConfirm: false,
             cancelText: 'My bookings',
             redirectToWorkspace: true
@@ -143,6 +156,8 @@ export class BookingFormComponent {
 
   }
 
+
+  // Loads booking data by ID, fills the form, and updates the workspace selection state
   loadBooking(id: number) {
 
     this.workspaceService.getBookingById(id,).subscribe(booking => {
@@ -156,7 +171,7 @@ export class BookingFormComponent {
     });
   }
 
-
+  // Handles change of selected workspace, updates UI depending on room type
   onWorkspaceChange(): void {
     const result = getWorkspaceChangeState(this.workspaces, this.selectedWorkspaceId);
     this.showDropdown = result.showDropdown;
@@ -167,6 +182,7 @@ export class BookingFormComponent {
 
 
 
+  // Updates an existing reservation (PATCH) after validating dates and times, shows a success or error message
   patchReservation() {
     const validationError = this.calendar.validateDateTimes();
 
@@ -221,7 +237,7 @@ export class BookingFormComponent {
     });
   }
 
-
+  // Unsubscribes when the component is destroyed to avoid memory leaks
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }

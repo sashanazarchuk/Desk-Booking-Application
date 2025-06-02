@@ -18,14 +18,14 @@ import { BookingService } from '../../core/services/booking.service';
 })
 export class BookingsHistoryComponent {
 
-  bookings$!: Observable<Booking[]>;
-
-  image = environment.imageURL;
-
   readonly dialog = inject(MatDialog);
+  bookings$!: Observable<Booking[]>;
+  image = environment.imageURL;
+  WorkspaceType = WorkspaceType;
+
+  
   constructor(private bookingService: BookingService, private router: Router) { }
 
-  WorkspaceType = WorkspaceType;
 
   ngOnInit(): void {
     this.bookings$ = this.bookingService.getAllBookings();
@@ -76,7 +76,7 @@ export class BookingsHistoryComponent {
     return '';
   }
 
-
+  //Open Dialog for confirm or cancel delete booking
   openDialog(type: 'success' | 'confirm', id?: number, imageUrl?: string) {
     const data: any = {};
 

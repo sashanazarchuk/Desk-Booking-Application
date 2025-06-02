@@ -7,7 +7,7 @@
         {{ isEditMode ? 'Edit your booking' : 'Book your workspace' }}
     </h1>
 
-    <div class="grid grid-cols-[60%_45%] gap-4">
+    <div class="grid grid-cols-[60%_25%] gap-4">
 
         <!-- Booking -->
         <div class="bg-white rounded-lg items-start p-5 flex flex-col ">
@@ -47,7 +47,7 @@
             </div>
 
 
-             <!-- Radio buttons, if NO OpenSpace -->
+            <!-- Radio buttons, if NO OpenSpace -->
             <div *ngIf="showRadioButtons" class="mt-4 w-full">
                 <label>What room size do you need?</label>
                 <div *ngFor="let workspace of workspaces$ | async">
@@ -74,16 +74,18 @@
 
 
         <!-- Date and time -->
-        <div class="grid-cols-2  mr-50  bg-white rounded-lg   ">
-            <h1 class="text-3xl font-medium p-5">Choose date and time</h1>
+        <div class="bg-white rounded-lg max-w-xl mx-auto p-5 flex flex-col gap-6">
+            <h1 class="text-3xl font-medium">Choose date and time</h1>
+
             <app-date-time-picker></app-date-time-picker>
-            <div class="flex justify-center  pb-5  ">
+
+            <div class="flex justify-center">
                 <button (click)="isEditMode ? patchReservation() : submitReservation()" type="submit"
-                    class="w-1/2 bg-indigo-600 text-white p-2 mt-2 rounded-md">
+                    class="w-1/2 bg-indigo-600 text-white p-2 rounded-md hover:bg-indigo-700 transition">
                     Submit
                 </button>
             </div>
-
         </div>
+
     </div>
 </div>

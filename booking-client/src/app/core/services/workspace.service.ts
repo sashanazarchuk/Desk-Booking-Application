@@ -10,10 +10,8 @@ import { Booking } from '../models/booking.model';
 export class WorkspaceService {
 
   private URL = "https://localhost:7198/api/"
+
   constructor(private http: HttpClient) { }
-
-
-
 
   getAllWorkspaces(): Observable<Workspace[]> {
     return this.http.get<Workspace[]>(`${this.URL}Workspace`).pipe(
@@ -24,7 +22,6 @@ export class WorkspaceService {
     );
   }
 
-
   getBookingById(id: number): Observable<Booking> {
     return this.http.get<Booking>(`${this.URL}Booking/${id}`);
   }
@@ -32,6 +29,5 @@ export class WorkspaceService {
   updateBooking(id: number, payload: any): Observable<any> {
     return this.http.patch(`${this.URL}Booking/${id}`, payload);
   }
-
-
+  
 }

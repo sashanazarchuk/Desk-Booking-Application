@@ -18,7 +18,6 @@ import { BookingService } from '../../core/services/booking.service';
 
 export class WorkspaceComponent {
 
-
   workspaces$!: Observable<Workspace[]>;
   bookings$!: Observable<Booking[]>;
   image = environment.imageURL;
@@ -30,7 +29,6 @@ export class WorkspaceComponent {
   ngOnInit() {
     this.workspaces$ = this.workspaceService.getAllWorkspaces();
     this.bookings$ = this.bookingServe.getAllBookings();
-    
   }
 
 

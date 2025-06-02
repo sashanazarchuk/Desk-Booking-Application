@@ -30,7 +30,7 @@
                     </div>
                 </div>
 
-
+                <!-- If there are no rooms except Open Space, we show the general availability of workplaces -->
                 <ng-container *ngIf="!hasNonOpenSpaceRooms(workspace)">
                     <div *ngFor="let workspace of workspace.rooms">
                         <h1 class="text-2xl font-medium">Availability</h1>
@@ -42,7 +42,7 @@
                 </ng-container>
 
 
-
+                <!-- If there are rooms other than Open Space, we show detailed capacity options and availability for each room -->
                 <ng-container *ngIf="hasNonOpenSpaceRooms(workspace)">
                     <div>
                         <h1 class="text-2xl font-medium">Capacity options</h1>
@@ -54,7 +54,7 @@
                         </div>
                     </div>
 
-
+                    <!-- Display the availability of rooms, except Open Space, with the number of rooms -->
                     <div>
                         <h1 class="text-2xl font-medium">Availability</h1>
                         <ul class="text-[#6B6B6B] pt-2">
@@ -71,20 +71,29 @@
             </div>
 
 
-
+            <!-- Iterate through all bookings   -->
             <ng-container *ngFor="let book of (bookings$ | async)">
+
+                <!-- Display reservations that apply to the current workspace (workspace.id) -->
                 <div *ngIf="book.workspace.id === workspace.id" class="bg-[#EAF7EE] p-2 flex">
                     <img src="icons/success.svg" class="w-[25px] mr-2" />
                     <div>
+
+                        <!-- Text indicating that this space is already booked -->
                         This workspace is already booked by
                         <span class="font-medium">{{ book.email }}</span>
+
+                        <!-- If the workspace has rooms that are not Open Space, we display the number of seats by the capacity of the rooms -->
                         <ng-container *ngIf="hasNonOpenSpaceRooms(workspace); else openSpaceBlock">
                             for {{ book.rooms.capacity }} people
                         </ng-container>
+
                         <ng-template #openSpaceBlock>
                             for <span class="font-medium">{{ book.seatsBooked }}</span>
                             {{ book.seatsBooked === 1 ? 'person' : 'people' }}
                         </ng-template>
+                        
+                        <!-- Booking period: start and end -->
                         from
                         <span class="font-medium">
                             {{ book.startDate | date: 'MMMM d, y, h:mm a' }}
@@ -96,11 +105,6 @@
                     </div>
                 </div>
             </ng-container>
-
-
-
-
-
 
         </div>
         <div>

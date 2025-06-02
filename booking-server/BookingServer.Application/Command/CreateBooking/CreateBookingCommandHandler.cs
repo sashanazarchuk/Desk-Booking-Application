@@ -31,7 +31,7 @@ namespace BookingServer.Application.Command.CreateBooking
 
             var room = await repository.GetRoomByIdAsync(request.dto.RoomId, cancellationToken);
             if (room == null)
-                throw new NotFoundException($"Room with ID {request.dto.RoomId} was not found.");
+                throw new NotFoundException($"Room was not found.");
 
              
             if (room.WorkspaceType == WorkspaceType.OpenSpace)
