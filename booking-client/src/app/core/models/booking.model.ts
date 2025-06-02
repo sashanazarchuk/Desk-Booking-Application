@@ -18,7 +18,6 @@ export interface BookingCreatePayload {
   email: string;
   roomId: number;
   seatsToBook?: number;
-  room?: number;
   startDate: string;
   endDate: string;
 }
