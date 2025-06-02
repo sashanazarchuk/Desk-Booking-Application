@@ -1,0 +1,53 @@
+﻿using AutoMapper;
+using BookingServer.Application.DTOs;
+using BookingServer.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BookingServer.Application.Mapper
+{
+    public class MappingProfile:Profile
+    {
+        public MappingProfile()
+        {
+            // Workspace 
+            CreateMap<Workspace, WorkspaceDto>()
+                .ForMember(dest => dest.Amenities, opt => opt.MapFrom(src => src.WorkspaceAmenities.Select(wa => wa.Amenity)));
+
+            CreateMap<WorkspaceDto, Workspace>();
+
+            // Room  
+            CreateMap<Room, RoomDto>()
+                .ForMember(dest => dest.WorkspaceType, opt => opt.MapFrom(src => src.WorkspaceType.ToString()));
+
+            CreateMap<RoomDto, Room>()
+                .ForMember(dest => dest.WorkspaceType, opt => opt.Ignore()); 
+
+            // WorkspacePhoto  
+            CreateMap<WorkspacePhoto, WorkspacePhotoDto>().ReverseMap();
+
+            // Amenity
+            CreateMap<Amenity, AmenityDto>().ReverseMap();
+
+            // Booking
+            CreateMap<Booking, BookingDto>()
+                .ForMember(dest => dest.Workspace, opt => opt.MapFrom(src => src.Rooms.Workspace))
+                .ReverseMap()
+                .ForMember(dest => dest.Rooms, opt => opt.Ignore());
+
+            CreateMap<CreateBookingDto, Booking>();
+
+
+            CreateMap<Booking, PatchBookingDto>()
+                .ForMember(dest => dest.Workspace, opt => opt.MapFrom(src => src.Rooms.Workspace))
+                .ForMember(dest => dest.WorkspaceType, opt => opt.MapFrom(src => src.Rooms.WorkspaceType))
+                .ForMember(dest => dest.RoomId, opt => opt.MapFrom(src => src.RoomId));
+
+            CreateMap<PatchBookingDto, Booking>()
+                .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+        }
+    }
+}
