@@ -37,23 +37,23 @@
 ## 📁 Project Structure
 
 ### Clean Architecture Layout
-
+```plaintext
 booking-server/
 ├── Domain/ 	# Core domain models and business logic
 ├── Application/ # CQRS handlers, DTOs, validators, mappings, interfaces
 ├── Infrastructure/ # Data access (EF Core, repositories), services, seeding
 ├── API/ # Web API controllers, middleware, DI
 
-
+```
 ### Angular Frontend Layout
-
+```plaintext
 booking-client/src/app/
 ├── booking-form/   # Components for creating and editing bookings (TS, HTML)
 ├── bookings-history/components/ # Components for viewing booking history (TS, HTML)
 ├── core/utils/     # Utility functions (booking, date, workspace)
 ├── modal/    # Shared modal component (HTML)
 ├── workspace/components/   # Components for displaying and interacting with workspaces (TS, HTML)
-
+```
 
 
 ## 📦 Getting Started
@@ -85,11 +85,13 @@ cd Application/booking-server/API
 
 ```
 # # Оновлюємо базу даних
+```bash
 dotnet ef database update
-
+```
 # Run API
+```bash
 dotnet run
-
+```
 
 
 ### 🚀 Frontend Setup (Angular 19)
