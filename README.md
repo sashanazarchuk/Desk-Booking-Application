@@ -84,7 +84,7 @@ cd Application/booking-server/API
 }
 
 ```
-# # Оновлюємо базу даних
+# # Updating the database
 ```bash
 dotnet ef database update
 ```
