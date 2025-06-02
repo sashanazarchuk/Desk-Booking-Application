@@ -1,0 +1,57 @@
+<div *ngIf="(bookings$ | async)?.length else noBookings">
+
+    <h2 class="text-3xl pt-10 pl-20 font-bold ">My bookings on Green Coworking</h2>
+
+    <div class="flex my-5  p-3 mx-20 bg-white rounded-lg items-start justify-between"
+        *ngFor="let booking of bookings$ | async">
+
+        <div class="flex">
+
+            <img [src]="image + booking.workspace.photos[0].url" class="w-[340px] rounded-lg" />
+
+            <div class="space-y-10 mx-10 w-full">
+
+                <h1 class="text-3xl font-bold">
+                    {{ booking.workspace.name }} for
+                    <span *ngIf="booking.rooms.workspaceType === WorkspaceType.OpenSpace; else capacity">
+                        {{ booking.seatsBooked }}
+                    </span>
+                    <ng-template #capacity>
+                        {{ booking.rooms.capacity }}
+                    </ng-template>
+                    people
+                </h1>
+
+
+                <div class="text-3xl space-y-10 items-center">
+                    <div class="flex">
+                        <img src="icons/calendar.svg" class="mr-2 p-3 rounded-lg bg-[#F5F3FB]" width="50" /> {{
+                        booking.startDate | date:'MMMM d, y' }} - {{ booking.endDate
+                        | date:'MMMM d, y' }} {{
+                        getDurationDays(booking) }}
+                    </div>
+                    <div class="flex">
+                        <img src="icons/clock.svg" class="mr-2 p-3 rounded-lg bg-[#F5F3FB]" width="50"> from {{
+                        booking.startDate | date:'shortTime' }} to {{
+                        booking.endDate | date:'shortTime' }}
+                        {{getDurationHours(booking) }}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex">
+            <a (click)="editBooking(booking.id)"><img src="icons/edit.svg" class="p-3 cursor-pointer" width="60" /></a>
+            <a (click)="openDialog('confirm', booking.id, 'icons/trash.svg')">
+                <img src="icons/delete.svg" class="p-3 cursor-pointer" width="60" />
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+<ng-template #noBookings>
+    <app-empty-bookings></app-empty-bookings>
+</ng-template>

@@ -1,0 +1,24 @@
+<div *ngIf="data.imageUrl">
+    <img [src]="data.imageUrl" alt="Modal image" class="p-5">
+</div>
+
+<h2 class="font-bold text-2xl mx-5">{{ data.title }}</h2>
+
+<mat-dialog-content>
+    <div class="justify-center">
+        {{ data.message }}
+    </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="w-full">
+    <div class="flex justify-center gap-12  w-full ">
+        <button *ngIf="data.showConfirm" (click)="onConfirm()"
+            class="text-blue-400 rounded-lg w-1/2 border-2 border-blue-400 p-2 cursor-pointer">
+            {{ data.confirmText || 'Yes' }}
+        </button>
+        <button (click)="onCancel()"
+            class="text-white rounded-lg w-1/2 border-2 border-blue-400 bg-blue-400 p-2 cursor-pointer">
+            {{ data.cancelText || (data.showConfirm ? 'No' : 'Ok') }}
+        </button>
+    </div>
+</mat-dialog-actions>
