@@ -137,9 +137,14 @@ namespace BookingServer.Infrastructure.Migrations
                 columns: new[] { "Id", "IconUrl", "Name" },
                 values: new object[,]
                 {
-                    { 1, "https://example.com/icons/wifi.png", "Wi-Fi" },
-                    { 2, "https://example.com/icons/coffee.png", "Coffee" },
-                    { 3, "https://example.com/icons/game-room.png", "Game Room" }
+                    { 1, "/icons/wifi.svg", "Wi-Fi" },
+                    { 2, "/icons/coffee.svg", "Coffee" },
+                    { 3, "/icons/gamepad.svg", "Game Room" },
+                    { 4, "/icons/air-conditioning.svg", "Air Conditioning" },
+                    { 5, "/icons/armchair.svg", "Armchair" },
+                    { 6, "/icons/headphones.svg", "Headphones" },
+                    { 7, "/icons/microphone.svg", "Microphone" },
+                    { 8, "/icons/user.svg", "User" }
                 });
 
             migrationBuilder.InsertData(
@@ -159,10 +164,11 @@ namespace BookingServer.Infrastructure.Migrations
                 {
                     { 1, 24, 1, 1, 0 },
                     { 2, 1, 7, 2, 1 },
-                    { 3, 2, 5, 2, 1 },
-                    { 4, 10, 1, 2, 1 },
-                    { 5, 10, 4, 3, 2 },
-                    { 6, 20, 1, 3, 2 }
+                    { 3, 2, 4, 2, 1 },
+                    { 4, 5, 3, 2, 1 },
+                    { 5, 10, 1, 2, 1 },
+                    { 6, 10, 4, 3, 2 },
+                    { 7, 20, 1, 3, 2 }
                 });
 
             migrationBuilder.InsertData(
@@ -172,8 +178,15 @@ namespace BookingServer.Infrastructure.Migrations
                 {
                     { 1, 1 },
                     { 2, 1 },
+                    { 3, 1 },
+                    { 4, 1 },
                     { 1, 2 },
-                    { 2, 3 }
+                    { 4, 2 },
+                    { 6, 2 },
+                    { 1, 3 },
+                    { 4, 3 },
+                    { 6, 3 },
+                    { 7, 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -181,15 +194,18 @@ namespace BookingServer.Infrastructure.Migrations
                 columns: new[] { "Id", "Url", "WorkspaceId" },
                 values: new object[,]
                 {
-                    { 1, "https://example.com/photos/workspace1.jpg", 1 },
-                    { 2, "https://example.com/photos/workspace1.jpg", 1 },
-                    { 3, "https://example.com/photos/workspace1.jpg", 1 },
-                    { 4, "https://example.com/photos/workspace2.jpg", 2 },
-                    { 5, "https://example.com/photos/workspace2.jpg", 2 },
-                    { 6, "https://example.com/photos/workspace2.jpg", 2 },
-                    { 7, "https://example.com/photos/workspace3.jpg", 3 },
-                    { 8, "https://example.com/photos/workspace3.jpg", 3 },
-                    { 9, "https://example.com/photos/workspace3.jpg", 3 }
+                    { 1, "/images/open-space-1.png", 1 },
+                    { 2, "/images/open-space-2.png", 1 },
+                    { 3, "/images/open-space-3.png", 1 },
+                    { 4, "/images/open-space-4.png", 1 },
+                    { 5, "/images/private-room-1.png", 2 },
+                    { 6, "/images/private-room-2.png", 2 },
+                    { 7, "/images/private-room-3.png", 2 },
+                    { 8, "/images/private-room-4.png", 2 },
+                    { 9, "/images/meeting-room-1.png", 3 },
+                    { 10, "/images/meeting-room-2.png", 3 },
+                    { 11, "/images/meeting-room-3.png", 3 },
+                    { 12, "/images/meeting-room-4.png", 3 }
                 });
 
             migrationBuilder.InsertData(

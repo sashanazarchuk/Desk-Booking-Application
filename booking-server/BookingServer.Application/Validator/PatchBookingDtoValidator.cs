@@ -20,21 +20,25 @@ namespace BookingServer.Application.Validator
             this.validationService = validationService;
 
             RuleFor(x => x.Name)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Name is required.")
                 .Length(2, 60).WithMessage("Name must be between 2 and 60 characters.")
                 .When(x => x.Name is not null);
 
             RuleFor(x => x.Email)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                 .EmailAddress().WithMessage("Please enter a valid email address.")
                 .When(x => x.Email is not null);
 
             RuleFor(x => x.StartDate)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("Start date and time is required.")
                 .GreaterThan(DateTime.Now).WithMessage("Start date and time must be greater than current date and time.")
                 .When(x => x.StartDate.HasValue);
 
             RuleFor(x => x.EndDate)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty().WithMessage("End date and time is required.")
                 .GreaterThan(x => x.StartDate).WithMessage("End date and time must be greater than start date and time.")
                 .When(x => x.EndDate.HasValue && x.StartDate.HasValue);
@@ -66,7 +70,7 @@ namespace BookingServer.Application.Validator
                             return await validationService.IsBookingDurationValid(
                             dto.RoomId.Value, dto.StartDate.Value, dto.EndDate.Value, ct);
                         })
-                        .WithMessage("The booking period is incorrect. Make sure the end date is after the start date.");
+                        .WithMessage("The booking period is incorrect. Please ensure that the start and end dates are valid and correctly set.");
                 });
         }
 

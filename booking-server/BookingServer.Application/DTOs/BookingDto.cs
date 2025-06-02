@@ -13,6 +13,8 @@ namespace BookingServer.Application.DTOs
         public string Email { get; set; } = null!;
         
         public int RoomId { get; set; }
+        public RoomDto Rooms{ get; set; } =null!;
+                            
         public WorkspaceDto Workspace { get; set; } = null!;
         
         public DateTime StartDate { get; set; }

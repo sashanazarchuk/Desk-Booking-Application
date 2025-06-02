@@ -35,6 +35,15 @@ namespace BookingServer.Infrastructure.Persistence.Repositories
                     .ThenInclude(w => w.Photos)
                 .ToListAsync(cancellationToken);
 
+            foreach (var booking in bookings)
+            {
+                if (booking.Rooms.Workspace?.Photos != null)
+                {
+                    booking.Rooms.Workspace.Photos = booking.Rooms.Workspace.Photos
+                        .OrderBy(photo => photo.Id)
+                        .ToList();
+                }
+            }
             return bookings;
         }
 

@@ -34,7 +34,13 @@ namespace BookingServer.API.Controllers
 
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+                var errors = validationResult.Errors
+                    .Select(e => new {
+                        field = e.PropertyName,
+                        message = e.ErrorMessage
+                    });
+
+                return BadRequest(new { errors });
             }
 
             await mediator.Send(new CreateBookingCommand(dto));
@@ -72,7 +78,13 @@ namespace BookingServer.API.Controllers
 
             if (!validationResult.IsValid)
             {
-                return BadRequest(validationResult.Errors.Select(e => e.ErrorMessage));
+                var errors = validationResult.Errors
+                    .Select(e => new {
+                        field = e.PropertyName,
+                        message = e.ErrorMessage
+                    });
+
+                return BadRequest(new { errors });
             }
 
             await mediator.Send(new PatchBookingCommand(id, patchDoc), cancellationToken);

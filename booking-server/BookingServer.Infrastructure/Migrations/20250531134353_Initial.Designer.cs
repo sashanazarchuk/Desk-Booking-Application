@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookingServer.Infrastructure.Migrations
 {
     [DbContext(typeof(BookingDbContext))]
-    [Migration("20250527203332_Initial")]
+    [Migration("20250531134353_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -47,20 +47,50 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            IconUrl = "https://example.com/icons/wifi.png",
+                            IconUrl = "/icons/wifi.svg",
                             Name = "Wi-Fi"
                         },
                         new
                         {
                             Id = 2,
-                            IconUrl = "https://example.com/icons/coffee.png",
+                            IconUrl = "/icons/coffee.svg",
                             Name = "Coffee"
                         },
                         new
                         {
                             Id = 3,
-                            IconUrl = "https://example.com/icons/game-room.png",
+                            IconUrl = "/icons/gamepad.svg",
                             Name = "Game Room"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            IconUrl = "/icons/air-conditioning.svg",
+                            Name = "Air Conditioning"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            IconUrl = "/icons/armchair.svg",
+                            Name = "Armchair"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            IconUrl = "/icons/headphones.svg",
+                            Name = "Headphones"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            IconUrl = "/icons/microphone.svg",
+                            Name = "Microphone"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            IconUrl = "/icons/user.svg",
+                            Name = "User"
                         });
                 });
 
@@ -166,15 +196,15 @@ namespace BookingServer.Infrastructure.Migrations
                         {
                             Id = 3,
                             Capacity = 2,
-                            RoomsCount = 5,
+                            RoomsCount = 4,
                             WorkspaceId = 2,
                             WorkspaceType = 1
                         },
                         new
                         {
                             Id = 4,
-                            Capacity = 10,
-                            RoomsCount = 1,
+                            Capacity = 5,
+                            RoomsCount = 3,
                             WorkspaceId = 2,
                             WorkspaceType = 1
                         },
@@ -182,13 +212,21 @@ namespace BookingServer.Infrastructure.Migrations
                         {
                             Id = 5,
                             Capacity = 10,
+                            RoomsCount = 1,
+                            WorkspaceId = 2,
+                            WorkspaceType = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Capacity = 10,
                             RoomsCount = 4,
                             WorkspaceId = 3,
                             WorkspaceType = 2
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 7,
                             Capacity = 20,
                             RoomsCount = 1,
                             WorkspaceId = 3,
@@ -253,6 +291,16 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             WorkspaceId = 1,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 1,
+                            AmenityId = 3
+                        },
+                        new
+                        {
+                            WorkspaceId = 1,
                             AmenityId = 1
                         },
                         new
@@ -267,8 +315,33 @@ namespace BookingServer.Infrastructure.Migrations
                         },
                         new
                         {
+                            WorkspaceId = 2,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 2,
+                            AmenityId = 6
+                        },
+                        new
+                        {
                             WorkspaceId = 3,
-                            AmenityId = 2
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 6
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 7
                         });
                 });
 
@@ -296,55 +369,73 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Url = "https://example.com/photos/workspace1.jpg",
+                            Url = "/images/open-space-1.png",
                             WorkspaceId = 1
                         },
                         new
                         {
                             Id = 2,
-                            Url = "https://example.com/photos/workspace1.jpg",
+                            Url = "/images/open-space-2.png",
                             WorkspaceId = 1
                         },
                         new
                         {
                             Id = 3,
-                            Url = "https://example.com/photos/workspace1.jpg",
+                            Url = "/images/open-space-3.png",
                             WorkspaceId = 1
                         },
                         new
                         {
                             Id = 4,
-                            Url = "https://example.com/photos/workspace2.jpg",
-                            WorkspaceId = 2
+                            Url = "/images/open-space-4.png",
+                            WorkspaceId = 1
                         },
                         new
                         {
                             Id = 5,
-                            Url = "https://example.com/photos/workspace2.jpg",
+                            Url = "/images/private-room-1.png",
                             WorkspaceId = 2
                         },
                         new
                         {
                             Id = 6,
-                            Url = "https://example.com/photos/workspace2.jpg",
+                            Url = "/images/private-room-2.png",
                             WorkspaceId = 2
                         },
                         new
                         {
                             Id = 7,
-                            Url = "https://example.com/photos/workspace3.jpg",
-                            WorkspaceId = 3
+                            Url = "/images/private-room-3.png",
+                            WorkspaceId = 2
                         },
                         new
                         {
                             Id = 8,
-                            Url = "https://example.com/photos/workspace3.jpg",
-                            WorkspaceId = 3
+                            Url = "/images/private-room-4.png",
+                            WorkspaceId = 2
                         },
                         new
                         {
                             Id = 9,
-                            Url = "https://example.com/photos/workspace3.jpg",
+                            Url = "/images/meeting-room-1.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Url = "/images/meeting-room-2.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Url = "/images/meeting-room-3.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Url = "/images/meeting-room-4.png",
                             WorkspaceId = 3
                         });
                 });

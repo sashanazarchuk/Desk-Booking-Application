@@ -13,12 +13,23 @@ namespace BookingServer.Infrastructure.Persistence.DataSeed
         public static void Seed(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<WorkspaceAmenity>().HasData(
+                
+                //OpenSpace
+                new WorkspaceAmenity { WorkspaceId = 1, AmenityId = 4 },
+                new WorkspaceAmenity { WorkspaceId = 1, AmenityId = 3 },
                 new WorkspaceAmenity { WorkspaceId = 1, AmenityId = 1 },
                 new WorkspaceAmenity { WorkspaceId = 1, AmenityId = 2 },
-
+               
+                //PrivateRoom
                 new WorkspaceAmenity { WorkspaceId = 2, AmenityId = 1 },
-
-                new WorkspaceAmenity { WorkspaceId = 3, AmenityId = 2 }
+                new WorkspaceAmenity { WorkspaceId = 2, AmenityId = 4 },
+                new WorkspaceAmenity { WorkspaceId = 2, AmenityId = 6 },
+                
+                //MeetingRoom
+                new WorkspaceAmenity { WorkspaceId = 3, AmenityId = 1 },
+                new WorkspaceAmenity { WorkspaceId = 3, AmenityId = 4 },
+                new WorkspaceAmenity { WorkspaceId = 3, AmenityId = 6 },
+                new WorkspaceAmenity { WorkspaceId = 3, AmenityId = 7 }
             );
         }
     }

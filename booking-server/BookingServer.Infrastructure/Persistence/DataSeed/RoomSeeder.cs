@@ -39,12 +39,21 @@ namespace BookingServer.Infrastructure.Persistence.DataSeed
                     Id = 3,
                     WorkspaceType = WorkspaceType.PrivateRoom,
                     Capacity = 2,
-                    RoomsCount = 5,
+                    RoomsCount = 4,
                     WorkspaceId = 2
                 },
                 new Room
                 {
                     Id = 4,
+                    WorkspaceType = WorkspaceType.PrivateRoom,
+                    Capacity = 5,
+                    RoomsCount = 3,
+                    WorkspaceId = 2
+                },
+
+                new Room
+                {
+                    Id = 5,
                     WorkspaceType = WorkspaceType.PrivateRoom,
                     Capacity = 10,
                     RoomsCount = 1,
@@ -54,7 +63,7 @@ namespace BookingServer.Infrastructure.Persistence.DataSeed
                 // Meeting Rooms
                 new Room
                 {
-                    Id = 5,
+                    Id = 6,
                     WorkspaceType = WorkspaceType.MeetingRoom,
                     Capacity = 10,
                     RoomsCount = 4,
@@ -62,7 +71,7 @@ namespace BookingServer.Infrastructure.Persistence.DataSeed
                 },
                 new Room
                 {
-                    Id = 6,
+                    Id = 7,
                     WorkspaceType = WorkspaceType.MeetingRoom,
                     Capacity = 20,
                     RoomsCount = 1,
