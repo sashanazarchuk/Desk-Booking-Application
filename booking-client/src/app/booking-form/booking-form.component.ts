@@ -114,13 +114,14 @@ export class BookingFormComponent {
       .flatMap(ws => ws.rooms)
       .find(r => r.id === this.selectedRoomId);
 
-    if (!room) {
-      return;
-    }
 
-    const seatsText = room.workspaceType === WorkspaceType.OpenSpace
-      ? `${this.selectedSeats} ${this.selectedSeats === 1 ? 'person' : 'people'}`
-      : `${room.capacity} ${room.capacity === 1 ? 'person' : 'people'}`;
+
+    let seatsText = '';
+    if (room) {
+      seatsText = room.workspaceType === WorkspaceType.OpenSpace
+        ? `${this.selectedSeats} ${this.selectedSeats === 1 ? 'person' : 'people'}`
+        : `${room.capacity} ${room.capacity === 1 ? 'person' : 'people'}`;
+    }
 
 
     const payload: BookingCreatePayload = {
