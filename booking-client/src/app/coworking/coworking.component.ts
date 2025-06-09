@@ -10,7 +10,7 @@ import { EmptyBookingsComponent } from "../empty-bookings/empty-bookings.compone
 import { select, Store } from '@ngrx/store';
 import * as CoworkingActions from '../store/coworking/coworking.actions'
 import { coworkingSelector, errorSelector, isLoadingSelector } from '../store/coworking/coworking.selectors';
-import { AppState } from '../store/types/AppState';
+import { AppState } from '../store/types/appState';
 
 
 @Component({

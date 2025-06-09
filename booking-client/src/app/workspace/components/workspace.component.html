@@ -1,8 +1,17 @@
 <h1 class="text-3xl font-medium pt-10 pl-20">Available workspaces</h1>
 
+<div *ngIf="isLoading$ | async" class="text-center text-xl my-10 text-indigo-600">
+    <p>Loading workspaces...</p>
+</div>
+
+<div *ngIf="error$ | async as error" class="text-red-500 text-center my-4">
+    <p>Error: {{ error }}</p>
+</div>
+
+
 <ng-content *ngIf="workspaces$ | async as workspaces">
 
-    
+
     <div class="flex my-5 p-5 mx-20 bg-white rounded-lg items-start" *ngFor="let workspace of workspaces$| async">
         <div>
             <img [src]="image + workspace.photos[0].url" alt="Main" class="rounded-lg w-[320px]" />

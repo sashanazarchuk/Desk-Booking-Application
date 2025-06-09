@@ -1,5 +1,5 @@
 import { createSelector } from "@ngrx/store";
-import { AppState } from "../types/AppState";
+import { AppState } from "../types/appState";
 
 export const selectFeature = (state: AppState) => state.coworkings
 
