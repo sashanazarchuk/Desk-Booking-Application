@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Reflection.Emit;
 
 namespace BookingServer.Infrastructure.Persistence.EntityConfiguration
 {
@@ -26,6 +27,12 @@ namespace BookingServer.Infrastructure.Persistence.EntityConfiguration
             builder.HasMany(w => w.WorkspaceAmenities)
                    .WithOne(wa => wa.Workspace)
                    .HasForeignKey(wa => wa.WorkspaceId);
+
+
+            builder.HasOne(w => w.Coworking)
+                   .WithMany(c => c.Workspaces)
+                   .HasForeignKey(w => w.CoworkingId)
+                   .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -7,6 +7,7 @@ export interface Workspace {
   name: string;
   description: string;
   rooms: Room[];
+  coworkingId:number;
   photos: WorkspacePhoto[];
   amenities: Amenity[];
 }

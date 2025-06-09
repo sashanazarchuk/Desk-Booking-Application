@@ -13,7 +13,9 @@ import { createPatchDoc } from '../core/utils/booking.utils';
 import { ErrorHandlerService } from '../core/services/error-handler.service';
 import { DateTimePickerComponent } from "../date-time-picker/date-time-picker.component";
 import { Workspace, WorkspaceType } from '../core/models/workspace.model';
-import { Booking, BookingCreatePayload } from '../core/models/booking.model';
+import { BookingCreatePayload } from '../core/models/booking.model';
+import { Room } from '../core/models/room.model';
+import { CoworkingService } from '../core/services/coworking.service';
 
 @Component({
   selector: 'app-booking-form',
@@ -29,6 +31,7 @@ export class BookingFormComponent {
   private subscription!: Subscription;
 
   workspaces$!: Observable<Workspace[]>;
+
   workspaces: Workspace[] = [];
   selectedWorkspaceId: string = '';
   showDropdown = false;
@@ -37,6 +40,8 @@ export class BookingFormComponent {
   selectedRoomType: WorkspaceType | null = null;
   bookingId?: number;
   isEditMode = false;
+  coworkingId!: number;
+
 
   name = '';
   email = '';
@@ -45,38 +50,64 @@ export class BookingFormComponent {
   formErrors: { [key: string]: string[] } = {};
   generalErrors: string[] = [];
 
-  constructor(private workspaceService: WorkspaceService, private errorHandlerService: ErrorHandlerService, private route: ActivatedRoute, private bookingService: BookingService) { }
+  constructor(private workspaceService: WorkspaceService, private coworkingService: CoworkingService, private errorHandlerService: ErrorHandlerService, private route: ActivatedRoute, private bookingService: BookingService) { }
 
 
   // Component initialization: get route parameters, load workspaces, define editing mode
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      const idParam = params.get('id');
-      if (idParam) {
-        this.isEditMode = true;
-        this.bookingId = +idParam;
-        this.loadBooking(this.bookingId);
+
+  ngOnInit(): void {
+    this.route.url.subscribe(segments => {
+      this.isEditMode = segments.some(s => s.path === 'edit');
+
+      if (this.isEditMode) {
+        const bookingId = Number(this.route.snapshot.paramMap.get('id'));
+        if (bookingId) {
+          this.bookingId = bookingId;
+          this.loadBooking(bookingId); // load booking and workspaces
+        }
       } else {
-        this.isEditMode = false;
+        const coworkingId = Number(this.route.snapshot.paramMap.get('coworkingId'));
+        if (coworkingId) {
+          this.coworkingId = coworkingId;
+          this.loadWorkspaces(coworkingId); // only load workspaces
+        }
       }
     });
+  }
 
-    this.workspaces$ = this.workspaceService.getAllWorkspaces();
 
-    this.workspaces$.subscribe(ws => {
+  // Loads booking data by ID, fills the form, and updates the workspace selection state
+  loadBooking(id: number) {
+    this.workspaceService.getBookingById(id,).subscribe(booking => {
+      this.name = booking.name;
+      this.email = booking.email;
+      this.selectedRoomId = booking.roomId;
+      this.selectedSeats = booking.seatsBooked;
+      this.selectedWorkspaceId = booking.workspace.name;
+      this.coworkingId = booking.workspace.coworkingId;
+
+      updateCalendar(this.calendar, new Date(booking.startDate), new Date(booking.endDate));
+      this.loadWorkspaces(this.coworkingId, true);
+    });
+  }
+
+  // Handles change of selected workspace, updates UI depending on room type
+  onWorkspaceChange(): void {
+    const result = getWorkspaceChangeState(this.workspaces, this.selectedWorkspaceId);
+    this.showDropdown = result.showDropdown;
+    this.showRadioButtons = result.showRadioButtons;
+    this.selectedRoomType = result.selectedRoomType;
+    this.selectedRoomId = result.selectedRoomId;
+  }
+
+
+  loadWorkspaces(coworkingId: number, callOnWorkspaceChange = false): void {
+    this.workspaces$ = this.coworkingService.getWorkspaceByCoworkingId(coworkingId);
+    this.subscription = this.workspaces$.subscribe(ws => {
       this.workspaces = ws;
-      if (this.selectedWorkspaceId) {
+      if (callOnWorkspaceChange && this.selectedWorkspaceId) {
         this.onWorkspaceChange();
       }
-    });
-
-
-    this.subscription = this.workspaces$.subscribe(data => {
-      this.workspaces = data;
-    });
-
-    this.route.url.subscribe(segments => {
-      this.isEditMode = segments[0]?.path === 'edit';
     });
   }
 
@@ -156,31 +187,6 @@ export class BookingFormComponent {
     });
 
   }
-
-
-  // Loads booking data by ID, fills the form, and updates the workspace selection state
-  loadBooking(id: number) {
-
-    this.workspaceService.getBookingById(id,).subscribe(booking => {
-      this.name = booking.name;
-      this.email = booking.email;
-      this.selectedRoomId = booking.roomId;
-      this.selectedSeats = booking.seatsBooked;
-      this.selectedWorkspaceId = booking.workspace.name;
-      updateCalendar(this.calendar, new Date(booking.startDate), new Date(booking.endDate));
-      this.onWorkspaceChange();
-    });
-  }
-
-  // Handles change of selected workspace, updates UI depending on room type
-  onWorkspaceChange(): void {
-    const result = getWorkspaceChangeState(this.workspaces, this.selectedWorkspaceId);
-    this.showDropdown = result.showDropdown;
-    this.showRadioButtons = result.showRadioButtons;
-    this.selectedRoomType = result.selectedRoomType;
-    this.selectedRoomId = result.selectedRoomId;
-  }
-
 
 
   // Updates an existing reservation (PATCH) after validating dates and times, shows a success or error message
