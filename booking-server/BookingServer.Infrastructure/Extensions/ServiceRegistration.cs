@@ -1,5 +1,6 @@
 ﻿using BookingServer.Application.DTOs;
 using BookingServer.Application.Interfaces;
+using BookingServer.Application.Interfaces.AI;
 using BookingServer.Application.Mapper;
 using BookingServer.Application.Services;
 using BookingServer.Application.Validation;
@@ -41,6 +42,9 @@ namespace BookingServer.Infrastructure.Extensions
             services.AddScoped<IWorkspaceRepository, WorkspaceRepository>();
             services.AddScoped<IBookingRepository, BookingRepository>();
             services.AddScoped<IBookingValidationService, BookingValidationService>();
+            services.AddScoped<ICoworkingRepository, CoworkingRepository>();
+            services.AddScoped<IPromptReaderService, PromptReaderService>();
+
         }
 
         private static void AddBackgroundServices(IServiceCollection services)

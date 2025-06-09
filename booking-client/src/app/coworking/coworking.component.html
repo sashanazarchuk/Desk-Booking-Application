@@ -1,0 +1,48 @@
+<div class="pt-10 pl-20">
+    <h1 class="text-3xl font-medium mb-2">Available coworking spaces</h1>
+    <p class="text-1xl text-[#6B6B6B]">Browse and choose a workspace that fits your needs</p>
+</div>
+
+
+<div *ngIf="(coworking$ | async)?.length else noCoworkings">
+    <div class="flex md:flex-row  my-5 p-3 mx-20 md:mx-20 bg-white rounded-lg items-start justify-between"
+        *ngFor="let cowork of coworking$|async">
+
+        <div class="flex flex-col md:flex-row w-full md:w-auto">
+
+            <img [src]="image + cowork.image" class="w-[180px] md:w-[240px] rounded-lg" />
+
+            <div class="space-y-4 mx-4 w-full">
+
+                <h1 class="text-xl md:text-2xl font-bold">{{cowork.name}}</h1>
+                <p class="text-sm">{{cowork.description}}</p>
+                <div class="flex items-center">
+                    <img src="icons/address.svg" width="40" class="rounded-lg bg-[#F5F3FB]" />
+                    <p class="mx-5 font-medium">{{cowork.address}}</p>
+                </div>
+                <div class="flex items-center">
+                    <img src="icons/armchair.svg" width="40" class="p-1 rounded-lg bg-[#F5F3FB]" />
+                    <p class="mx-5">🪑 {{cowork.openSpaceCount}} desks · 🔒 {{cowork.privateRoomCount}} private rooms ·
+                        👥 {{cowork.meetingRoomCount}} meeting rooms</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="flex space-x-2">
+            <button (click)="goToWorkspaces(cowork.id)"
+                class="bg-indigo-600 text-white p-2 rounded-md w-[160px] cursor-pointer">View Details</button>
+        </div>
+    </div>
+</div>
+
+
+
+<ng-template #noCoworkings>
+<app-empty-bookings 
+    [title]="'No coworking spaces available at the moment'" 
+    [subtitle]="'Please check back later or try adjusting your filters'"
+    [buttonText]="'Refresh list'" 
+    [routerLink]="'/coworking'">
+</app-empty-bookings>
+</ng-template>

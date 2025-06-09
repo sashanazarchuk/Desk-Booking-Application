@@ -9,5 +9,7 @@ namespace BookingServer.Application.Interfaces
 {
     public interface IWorkspaceRepository : IGenericRepository<Workspace>
     {
+
+        Task<List<Workspace>> GetWorkspacesByCoworkingIdAsync(int coworkingId, CancellationToken cancellationToken);
     }
 }

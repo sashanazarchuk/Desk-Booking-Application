@@ -32,7 +32,9 @@
             <select id="workspace" class="w-full border border-gray-300 text-[#787878] rounded px-3 py-2"
                 [(ngModel)]="selectedWorkspaceId" (change)="onWorkspaceChange()">
                 <option value="" disabled selected>Choose your workspace</option>
-                <option *ngFor="let room of workspaces$|async" [value]="room.name">{{ room.name }}</option>
+                <option *ngFor="let room of workspaces$ | async" [value]="room.name">
+                    {{ room.name }}  
+                </option>
             </select>
 
             <!-- Dropdown, IF OpenSpace -->
@@ -40,7 +42,7 @@
                 <label for="subDropdown">Select number of seats</label>
                 <select [(ngModel)]="selectedSeats" id="capacitySelect"
                     class="w-full border border-gray-300 text-[#787878] rounded px-3 py-2 ">
-                    <option *ngFor="let num of [].constructor(24); let i = index" [value]="i + 1">
+                    <option *ngFor="let num of  [].constructor(24); let i = index" [value]="i + 1">
                         {{ i + 1 }}
                     </option>
                 </select>
