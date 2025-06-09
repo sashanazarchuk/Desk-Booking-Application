@@ -1,5 +1,7 @@
 
 using BookingServer.API.Middlewares;
+using BookingServer.Application.Interfaces.AI;
+using BookingServer.Application.Services;
 using BookingServer.Infrastructure.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +12,10 @@ builder.Services.AddControllers().AddNewtonsoftJson();
 
 // Register Services
 builder.Services.AddInfrastructure(builder.Configuration);
+
+
+builder.Services.AddHttpClient<IAIService, AIService>();
+
 
 // Configure CORS to allow frontend to connect
 builder.Services.AddCors(options =>
