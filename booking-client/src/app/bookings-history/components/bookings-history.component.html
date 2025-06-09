@@ -1,7 +1,6 @@
+<h2 class="text-3xl pt-10 pl-20 font-bold ">My bookings on Green Coworking</h2>
+
 <div *ngIf="(bookings$ | async)?.length else noBookings">
-
-    <h2 class="text-3xl pt-10 pl-20 font-bold ">My bookings on Green Coworking</h2>
-
     <div class="flex md:flex-row  my-5 p-3 mx-20 md:mx-20 bg-white rounded-lg items-start justify-between"
         *ngFor="let booking of bookings$ | async">
 

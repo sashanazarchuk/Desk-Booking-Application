@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using BookingServer.Application.DTOs;
 using BookingServer.Domain.Entities;
+using BookingServer.Domain.Enum;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace BookingServer.Application.Mapper
 {
-    public class MappingProfile:Profile
+    public class MappingProfile : Profile
     {
         public MappingProfile()
         {
@@ -24,7 +25,7 @@ namespace BookingServer.Application.Mapper
                 .ForMember(dest => dest.WorkspaceType, opt => opt.MapFrom(src => src.WorkspaceType.ToString()));
 
             CreateMap<RoomDto, Room>()
-                .ForMember(dest => dest.WorkspaceType, opt => opt.Ignore()); 
+                .ForMember(dest => dest.WorkspaceType, opt => opt.Ignore());
 
             // WorkspacePhoto  
             CreateMap<WorkspacePhoto, WorkspacePhotoDto>().ReverseMap();
@@ -48,6 +49,23 @@ namespace BookingServer.Application.Mapper
 
             CreateMap<PatchBookingDto, Booking>()
                 .ForAllMembers(opt => opt.Condition((src, dest, srcMember) => srcMember != null));
+
+
+            //Coworking
+            CreateMap<Coworking, CoworkingDto>()
+             .ForMember(dest => dest.OpenSpaceCount, opt => opt.MapFrom(src =>
+                 src.Workspaces.SelectMany(ws => ws.Rooms)
+                     .Where(r => r.WorkspaceType == WorkspaceType.OpenSpace)
+                     .Sum(r => r.Capacity)))
+             .ForMember(dest => dest.PrivateRoomCount, opt => opt.MapFrom(src =>
+                 src.Workspaces.SelectMany(ws => ws.Rooms)
+                     .Where(r => r.WorkspaceType == WorkspaceType.PrivateRoom)
+                     .Sum(r => r.RoomsCount)))
+             .ForMember(dest => dest.MeetingRoomCount, opt => opt.MapFrom(src =>
+                 src.Workspaces.SelectMany(ws => ws.Rooms)
+                     .Where(r => r.WorkspaceType == WorkspaceType.MeetingRoom)
+                     .Sum(r => r.RoomsCount)));
+
         }
     }
 }

@@ -28,5 +28,19 @@ namespace BookingServer.Infrastructure.Persistence.Repositories
 
             return workspaces;
         }
+
+        public async Task<List<Workspace>> GetWorkspacesByCoworkingIdAsync(int coworkingId, CancellationToken cancellationToken)
+        {
+
+            return await context.Workspaces
+                .Where(c => c.CoworkingId == coworkingId)
+                .Include(w => w.Rooms)
+                .Include(w => w.Photos)
+                .Include(w => w.WorkspaceAmenities)
+                    .ThenInclude(wa => wa.Amenity)
+                .ToListAsync(cancellationToken);
+
+
+        }
     }
 }

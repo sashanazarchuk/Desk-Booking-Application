@@ -1,0 +1,35 @@
+<div class="pt-10 pl-20 mx-20">
+    <h1 class="text-3xl font-medium mb-2">AI Assistant</h1>
+
+    <div class="mt-6 mb-6">
+        <h3 class="text-gray-700 font-medium mb-2">Example questions:</h3>
+        <div class="flex flex-wrap gap-2">
+            <button class="bg-blue-100 hover:bg-blue-200 text-blue-400 border-2 border-blue-400 px-3 py-2 rounded cursor-pointer"
+                (click)="setExample('How many bookings do I have?')">
+                How many bookings do I have?
+            </button>
+            <button class="bg-blue-100 hover:bg-blue-200 text-blue-400 border-2 border-blue-400 px-3 py-2 rounded cursor-pointer"
+                (click)="setExample('Do I have anything on June 15?')">
+                Do I have anything on June 15?
+            </button>
+            <button class="bg-blue-100 hover:bg-blue-200 text-blue-400 border-2 border-blue-400 px-3 py-2 rounded cursor-pointer"
+                (click)="setExample('List all my private room bookings')">
+                List all my private room bookings
+            </button>
+        </div>
+    </div>
+
+    <div class="space-y-4  ">
+        <input [(ngModel)]="userMessage" placeholder="Ask anything..." class="border p-2 w-full rounded" />
+
+        <button (click)="sendToAI()" class="bg-blue-600 text-white px-4 py-2 rounded cursor-pointer"
+            [disabled]="loading">
+            {{ loading ? 'Wait...' : 'Send' }}
+        </button>
+
+        <div *ngIf="aiReply" class="bg-white p-3 rounded shadow whitespace-pre-line h-full" [innerHTML]="aiReply">
+            {{ aiReply }}
+        </div>
+
+    </div>
+</div>

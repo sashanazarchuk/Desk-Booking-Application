@@ -30,6 +30,7 @@ namespace BookingServer.Infrastructure.Persistence
 
         }
 
+        public DbSet<Coworking> Coworkings { get; set; }    
         public DbSet<Amenity> Amenities { get; set; }
         public DbSet<Workspace> Workspaces { get; set; }
         public DbSet<WorkspaceAmenity> WorkspaceAmenities { get; set; }

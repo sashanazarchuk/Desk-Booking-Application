@@ -17,6 +17,7 @@ namespace BookingServer.Infrastructure.Persistence.DataSeed
             WorkspacePhotoSeeder.Seed(modelBuilder);
             WorkspaceAmenitySeeder.Seed(modelBuilder);
             BookingSeeder.Seed(modelBuilder);
+            CoworkingSeeder.Seed(modelBuilder); 
         }
     }
 }

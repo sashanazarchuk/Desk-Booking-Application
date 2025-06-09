@@ -127,22 +127,219 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Email = "alice@example.com",
-                            EndDate = new DateTime(2025, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Alice",
+                            Email = "charlie@example.com",
+                            EndDate = new DateTime(2025, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Charlie",
                             RoomId = 1,
                             SeatsBooked = 1,
-                            StartDate = new DateTime(2025, 6, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                            StartDate = new DateTime(2025, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
-                            Email = "bob@example.com",
-                            EndDate = new DateTime(2025, 6, 7, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Name = "Bob",
+                            Email = "diana@example.com",
+                            EndDate = new DateTime(2025, 6, 4, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Diana",
+                            RoomId = 3,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Email = "ethan@example.com",
+                            EndDate = new DateTime(2025, 6, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Ethan",
                             RoomId = 2,
                             SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 10, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Email = "fiona@example.com",
+                            EndDate = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Fiona",
+                            RoomId = 1,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 12, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Email = "george@example.com",
+                            EndDate = new DateTime(2025, 6, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "George",
+                            RoomId = 4,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 5, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Email = "hannah@example.com",
+                            EndDate = new DateTime(2025, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Hannah",
+                            RoomId = 3,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Email = "ian@example.com",
+                            EndDate = new DateTime(2025, 6, 18, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Ian",
+                            RoomId = 2,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Email = "julia@example.com",
+                            EndDate = new DateTime(2025, 6, 22, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Julia",
+                            RoomId = 1,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Email = "kevin@example.com",
+                            EndDate = new DateTime(2025, 6, 6, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Kevin",
+                            RoomId = 5,
+                            SeatsBooked = 1,
                             StartDate = new DateTime(2025, 6, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Email = "laura@example.com",
+                            EndDate = new DateTime(2025, 6, 9, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Laura",
+                            RoomId = 4,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 7, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Email = "mike@example.com",
+                            EndDate = new DateTime(2025, 6, 14, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Mike",
+                            RoomId = 5,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 11, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Email = "nina@example.com",
+                            EndDate = new DateTime(2025, 6, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Nina",
+                            RoomId = 3,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 15, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Email = "oscar@example.com",
+                            EndDate = new DateTime(2025, 6, 23, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Oscar",
+                            RoomId = 2,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 19, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Email = "paula@example.com",
+                            EndDate = new DateTime(2025, 6, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Paula",
+                            RoomId = 4,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 20, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Email = "quinn@example.com",
+                            EndDate = new DateTime(2025, 6, 28, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Name = "Quinn",
+                            RoomId = 1,
+                            SeatsBooked = 1,
+                            StartDate = new DateTime(2025, 6, 24, 0, 0, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("BookingServer.Domain.Entities.Coworking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Address")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Coworkings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Address = "123 Yaroslaviv Val St, Kyiv",
+                            Description = "Modern coworking in the heart of Pechersk with quiet rooms and coffee on tap.",
+                            Image = "/images/coworking-1.jpg",
+                            Name = "WorkClub Pechersk"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Address = "78 Naberezhno-Khreshchatytska St, Kyiv",
+                            Description = "A creative riverside hub ideal for freelancers and small startups.",
+                            Image = "/images/coworking-2.jpg",
+                            Name = "UrbanSpace Podil"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "12 Lvivska Square, Kyiv",
+                            Description = "A compact, design-focused space with open desks and strong community vibes.",
+                            Image = "/images/coworking-3.jpg",
+                            Name = "Creative Hub Lvivska"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "45 Velyka Vasylkivska St, Kyiv",
+                            Description = "A high-tech space near Olimpiiska metro, perfect for team sprints and solo focus.",
+                            Image = "/images/coworking-4.jpg",
+                            Name = "TechNest Olimpiiska"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "102 Zakrevskogo St, Kyiv",
+                            Description = "A quiet, affordable option in the city's northeast—great for remote workers.",
+                            Image = "/images/coworking-5.jpg",
+                            Name = "Hive Station Troieshchyna"
                         });
                 });
 
@@ -192,42 +389,90 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
-                            Capacity = 2,
-                            RoomsCount = 4,
+                            Capacity = 3,
+                            RoomsCount = 2,
                             WorkspaceId = 2,
                             WorkspaceType = 1
                         },
                         new
                         {
                             Id = 4,
-                            Capacity = 5,
-                            RoomsCount = 3,
-                            WorkspaceId = 2,
-                            WorkspaceType = 1
+                            Capacity = 16,
+                            RoomsCount = 1,
+                            WorkspaceId = 3,
+                            WorkspaceType = 0
                         },
                         new
                         {
                             Id = 5,
-                            Capacity = 10,
-                            RoomsCount = 1,
-                            WorkspaceId = 2,
-                            WorkspaceType = 1
+                            Capacity = 8,
+                            RoomsCount = 2,
+                            WorkspaceId = 4,
+                            WorkspaceType = 2
                         },
                         new
                         {
                             Id = 6,
-                            Capacity = 10,
-                            RoomsCount = 4,
-                            WorkspaceId = 3,
+                            Capacity = 14,
+                            RoomsCount = 1,
+                            WorkspaceId = 4,
                             WorkspaceType = 2
                         },
                         new
                         {
                             Id = 7,
+                            Capacity = 10,
+                            RoomsCount = 1,
+                            WorkspaceId = 5,
+                            WorkspaceType = 0
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Capacity = 2,
+                            RoomsCount = 3,
+                            WorkspaceId = 6,
+                            WorkspaceType = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Capacity = 12,
+                            RoomsCount = 2,
+                            WorkspaceId = 7,
+                            WorkspaceType = 2
+                        },
+                        new
+                        {
+                            Id = 10,
                             Capacity = 20,
                             RoomsCount = 1,
-                            WorkspaceId = 3,
-                            WorkspaceType = 2
+                            WorkspaceId = 8,
+                            WorkspaceType = 0
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Capacity = 15,
+                            RoomsCount = 1,
+                            WorkspaceId = 9,
+                            WorkspaceType = 0
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Capacity = 2,
+                            RoomsCount = 2,
+                            WorkspaceId = 10,
+                            WorkspaceType = 1
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Capacity = 4,
+                            RoomsCount = 1,
+                            WorkspaceId = 10,
+                            WorkspaceType = 1
                         });
                 });
 
@@ -239,6 +484,9 @@ namespace BookingServer.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("CoworkingId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Description")
                         .HasColumnType("text");
 
@@ -247,26 +495,80 @@ namespace BookingServer.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CoworkingId");
+
                     b.ToTable("Workspaces");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CoworkingId = 1,
                             Description = "A vibrant shared area perfect for freelancers or small teams who enjoy a collaborative atmosphere. Choose any available desk and get to work with flexibility and ease.",
                             Name = "Open Space"
                         },
                         new
                         {
                             Id = 2,
+                            CoworkingId = 1,
                             Description = "Ideal for focused work, video calls, or small team huddles. These fully enclosed rooms offer privacy and come in a variety of sizes to fit your needs.",
                             Name = "Private rooms"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Designed for productive meetings, workshops, or client presentations. Equipped with screens, whiteboards, and comfortable seating to keep your sessions running smoothly.",
+                            CoworkingId = 2,
+                            Description = "Creative and airy shared desks perfect for freelancers.",
+                            Name = "Open Space"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            CoworkingId = 2,
+                            Description = "Well-equipped rooms for presentations and brainstorming sessions.",
                             Name = "Meeting rooms"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            CoworkingId = 3,
+                            Description = "Design-focused open desks with community-driven atmosphere.",
+                            Name = "Open Space"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            CoworkingId = 3,
+                            Description = "Quiet zones ideal for focused work or video calls.",
+                            Name = "Private rooms"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            CoworkingId = 4,
+                            Description = "Tech-equipped rooms with whiteboards and screens for workshops.",
+                            Name = "Meeting rooms"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            CoworkingId = 4,
+                            Description = "Modern shared desks with fast Wi-Fi and natural light.",
+                            Name = "Open Space"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CoworkingId = 5,
+                            Description = "Affordable shared desks with essential amenities.",
+                            Name = "Open Space"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            CoworkingId = 5,
+                            Description = "Comfortable and quiet rooms for individuals or small groups.",
+                            Name = "Private rooms"
                         });
                 });
 
@@ -298,15 +600,95 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             WorkspaceId = 1,
-                            AmenityId = 1
-                        },
-                        new
-                        {
-                            WorkspaceId = 1,
                             AmenityId = 2
                         },
                         new
                         {
+                            WorkspaceId = 1,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 3
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 2
+                        },
+                        new
+                        {
+                            WorkspaceId = 3,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 5,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 5,
+                            AmenityId = 3
+                        },
+                        new
+                        {
+                            WorkspaceId = 5,
+                            AmenityId = 2
+                        },
+                        new
+                        {
+                            WorkspaceId = 5,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 8,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 8,
+                            AmenityId = 3
+                        },
+                        new
+                        {
+                            WorkspaceId = 8,
+                            AmenityId = 2
+                        },
+                        new
+                        {
+                            WorkspaceId = 8,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 9,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 9,
+                            AmenityId = 3
+                        },
+                        new
+                        {
+                            WorkspaceId = 9,
+                            AmenityId = 2
+                        },
+                        new
+                        {
+                            WorkspaceId = 9,
+                            AmenityId = 1
+                        },
+                        new
+                        {
                             WorkspaceId = 2,
                             AmenityId = 1
                         },
@@ -322,22 +704,72 @@ namespace BookingServer.Infrastructure.Migrations
                         },
                         new
                         {
-                            WorkspaceId = 3,
+                            WorkspaceId = 6,
                             AmenityId = 1
                         },
                         new
                         {
-                            WorkspaceId = 3,
+                            WorkspaceId = 6,
                             AmenityId = 4
                         },
                         new
                         {
-                            WorkspaceId = 3,
+                            WorkspaceId = 6,
                             AmenityId = 6
                         },
                         new
                         {
-                            WorkspaceId = 3,
+                            WorkspaceId = 10,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 10,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 10,
+                            AmenityId = 6
+                        },
+                        new
+                        {
+                            WorkspaceId = 4,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 4,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 4,
+                            AmenityId = 6
+                        },
+                        new
+                        {
+                            WorkspaceId = 4,
+                            AmenityId = 7
+                        },
+                        new
+                        {
+                            WorkspaceId = 7,
+                            AmenityId = 1
+                        },
+                        new
+                        {
+                            WorkspaceId = 7,
+                            AmenityId = 4
+                        },
+                        new
+                        {
+                            WorkspaceId = 7,
+                            AmenityId = 6
+                        },
+                        new
+                        {
+                            WorkspaceId = 7,
                             AmenityId = 7
                         });
                 });
@@ -390,50 +822,218 @@ namespace BookingServer.Infrastructure.Migrations
                         new
                         {
                             Id = 5,
+                            Url = "/images/open-space-1.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Url = "/images/open-space-2.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Url = "/images/open-space-3.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Url = "/images/open-space-4.png",
+                            WorkspaceId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Url = "/images/open-space-1.png",
+                            WorkspaceId = 5
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Url = "/images/open-space-2.png",
+                            WorkspaceId = 5
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Url = "/images/open-space-3.png",
+                            WorkspaceId = 5
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Url = "/images/open-space-4.png",
+                            WorkspaceId = 5
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Url = "/images/open-space-1.png",
+                            WorkspaceId = 8
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Url = "/images/open-space-2.png",
+                            WorkspaceId = 8
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Url = "/images/open-space-3.png",
+                            WorkspaceId = 8
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Url = "/images/open-space-4.png",
+                            WorkspaceId = 8
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Url = "/images/open-space-1.png",
+                            WorkspaceId = 9
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Url = "/images/open-space-2.png",
+                            WorkspaceId = 9
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Url = "/images/open-space-3.png",
+                            WorkspaceId = 9
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Url = "/images/open-space-4.png",
+                            WorkspaceId = 9
+                        },
+                        new
+                        {
+                            Id = 21,
                             Url = "/images/private-room-1.png",
                             WorkspaceId = 2
                         },
                         new
                         {
-                            Id = 6,
+                            Id = 22,
                             Url = "/images/private-room-2.png",
                             WorkspaceId = 2
                         },
                         new
                         {
-                            Id = 7,
+                            Id = 23,
                             Url = "/images/private-room-3.png",
                             WorkspaceId = 2
                         },
                         new
                         {
-                            Id = 8,
+                            Id = 24,
                             Url = "/images/private-room-4.png",
                             WorkspaceId = 2
                         },
                         new
                         {
-                            Id = 9,
+                            Id = 25,
+                            Url = "/images/private-room-1.png",
+                            WorkspaceId = 6
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Url = "/images/private-room-2.png",
+                            WorkspaceId = 6
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Url = "/images/private-room-3.png",
+                            WorkspaceId = 6
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Url = "/images/private-room-4.png",
+                            WorkspaceId = 6
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Url = "/images/private-room-1.png",
+                            WorkspaceId = 10
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Url = "/images/private-room-2.png",
+                            WorkspaceId = 10
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Url = "/images/private-room-3.png",
+                            WorkspaceId = 10
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Url = "/images/private-room-4.png",
+                            WorkspaceId = 10
+                        },
+                        new
+                        {
+                            Id = 33,
                             Url = "/images/meeting-room-1.png",
-                            WorkspaceId = 3
+                            WorkspaceId = 4
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 34,
                             Url = "/images/meeting-room-2.png",
-                            WorkspaceId = 3
+                            WorkspaceId = 4
                         },
                         new
                         {
-                            Id = 11,
+                            Id = 35,
                             Url = "/images/meeting-room-3.png",
-                            WorkspaceId = 3
+                            WorkspaceId = 4
                         },
                         new
                         {
-                            Id = 12,
+                            Id = 36,
                             Url = "/images/meeting-room-4.png",
-                            WorkspaceId = 3
+                            WorkspaceId = 4
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Url = "/images/meeting-room-1.png",
+                            WorkspaceId = 7
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Url = "/images/meeting-room-2.png",
+                            WorkspaceId = 7
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Url = "/images/meeting-room-3.png",
+                            WorkspaceId = 7
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Url = "/images/meeting-room-4.png",
+                            WorkspaceId = 7
                         });
                 });
 
@@ -457,6 +1057,17 @@ namespace BookingServer.Infrastructure.Migrations
                         .IsRequired();
 
                     b.Navigation("Workspace");
+                });
+
+            modelBuilder.Entity("BookingServer.Domain.Entities.Workspace", b =>
+                {
+                    b.HasOne("BookingServer.Domain.Entities.Coworking", "Coworking")
+                        .WithMany("Workspaces")
+                        .HasForeignKey("CoworkingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coworking");
                 });
 
             modelBuilder.Entity("BookingServer.Domain.Entities.WorkspaceAmenity", b =>
@@ -492,6 +1103,11 @@ namespace BookingServer.Infrastructure.Migrations
             modelBuilder.Entity("BookingServer.Domain.Entities.Amenity", b =>
                 {
                     b.Navigation("WorkspaceAmenities");
+                });
+
+            modelBuilder.Entity("BookingServer.Domain.Entities.Coworking", b =>
+                {
+                    b.Navigation("Workspaces");
                 });
 
             modelBuilder.Entity("BookingServer.Domain.Entities.Room", b =>
