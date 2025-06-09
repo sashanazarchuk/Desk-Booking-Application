@@ -3,6 +3,14 @@
     <p class="text-1xl text-[#6B6B6B]">Browse and choose a workspace that fits your needs</p>
 </div>
 
+<div *ngIf="isLoading$ | async" class="text-center text-xl my-10 text-indigo-600">
+    Loading coworking spaces...
+</div>
+
+
+<div *ngIf="(error$ | async) as error" class="text-center text-red-500 text-lg my-4">
+    {{ error }}
+</div>
 
 <div *ngIf="(coworking$ | async)?.length else noCoworkings">
     <div class="flex md:flex-row  my-5 p-3 mx-20 md:mx-20 bg-white rounded-lg items-start justify-between"
@@ -37,12 +45,9 @@
 </div>
 
 
-
 <ng-template #noCoworkings>
-<app-empty-bookings 
-    [title]="'No coworking spaces available at the moment'" 
-    [subtitle]="'Please check back later or try adjusting your filters'"
-    [buttonText]="'Refresh list'" 
-    [routerLink]="'/coworking'">
-</app-empty-bookings>
+    <app-empty-bookings [title]="'No coworking spaces available at the moment'"
+        [subtitle]="'Please check back later or try adjusting your filters'" [buttonText]="'Refresh list'"
+        [routerLink]="'/coworking'">
+    </app-empty-bookings>
 </ng-template>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { environment } from '../environment';
 import { Observable } from 'rxjs';
 import { Coworking } from '../core/models/coworking.model';
@@ -7,6 +7,11 @@ import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { Workspace } from '../core/models/workspace.model';
 import { Router } from '@angular/router';
 import { EmptyBookingsComponent } from "../empty-bookings/empty-bookings.component";
+import { select, Store } from '@ngrx/store';
+import * as CoworkingActions from '../store/coworking/coworking.actions'
+import { coworkingSelector, errorSelector, isLoadingSelector } from '../store/coworking/coworking.selectors';
+import { AppState } from '../store/types/AppState';
+
 
 @Component({
   selector: 'app-coworking',
@@ -14,20 +19,25 @@ import { EmptyBookingsComponent } from "../empty-bookings/empty-bookings.compone
   templateUrl: './coworking.component.html',
   styleUrl: './coworking.component.css'
 })
-export class CoworkingComponent {
+export class CoworkingComponent implements OnInit {
 
   image = environment.imageURL;
 
-  coworking$!: Observable<Coworking[]>;
-  workspaces$!: Observable<Workspace[]>;
+  coworking$: Observable<Coworking[]>;
+  isLoading$: Observable<boolean>;
+  error$: Observable<string | null>;
   selectedCoworkingId!: number;
 
 
-  constructor(private coworkingService: CoworkingService, private router: Router) { }
+  constructor(private router: Router, private store: Store<AppState>) {
+    this.isLoading$ = this.store.pipe(select(isLoadingSelector));
+    this.coworking$ = this.store.pipe(select(coworkingSelector));
+    this.error$ = this.store.pipe(select(errorSelector));
 
+  }
 
   ngOnInit() {
-    this.coworking$ = this.coworkingService.getAllCoworkings();
+    this.store.dispatch(CoworkingActions.loadAllCoworkings());
   }
 
   goToWorkspaces(id: number) {
