@@ -11,6 +11,7 @@
 - 📅 View current bookings and occupancy details per workspace
 - 📝 Book a workspace with form validation
 - 👤 Edit, or cancel your bookings from "My Bookings" page
+- 🧠 AI Assistant which helps users interact with their bookings using natural language
 
 ---
 
